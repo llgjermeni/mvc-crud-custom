@@ -1,0 +1,135 @@
+﻿@model IEnumerable<CrudeProject.Models.OrderProduct>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div class="col-sm-2"></div>
+<div class="col-sm-7">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FabricTypeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CoverTypeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FabricTypeID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CoverTypeID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.OrderProductID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.OrderProductID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.OrderProductID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<div class="col-sm-3" style="margin-top: 50px;">
+    <div>
+
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            FabricTypeID
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                        <form method="post">
+                            
+                                @foreach (var i in Model)
+                                {
+                            <div class="checkbox" style="right: 10px; left: 10px;">
+                                <input type="checkbox" id="yourId" name="selectedIds" value="@i.FabricTypeID" />
+                                <span style="margin-right:20px;">@i.FabricTypeID </span>  <br />
+                                @*@Html.CheckBoxIntFor(e => i.FabricTypeID)  <span style="margin-right:20px;">@i.FabricTypeID </span>  <br />*@
+                            </div>
+                                }
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            CoverTypeID
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+                        @foreach (var i in Model)
+                        {
+                        <div class="checkbox" style="right: 10px; left: 10px;">
+                            <input type="checkbox" id="yourId" name="selectedIds" value="@i.CoverTypeID" />
+                            <span style="margin-right:20px;">@i.CoverTypeID </span>  <br />
+                            @*@Html.CheckBoxIntFor(e => i.CoverTypeID)  <span style="margin-right:20px;">@i.CoverTypeID </span>  <br />*@
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingThree">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Quantity
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body">
+                        @foreach (var i in Model)
+                        {
+                        <div class="checkbox" style="right: 10px; left: 10px;">
+                            <input type="checkbox" id="yourId" name="selectedIds" value="@i.Quantity" />
+                            <span style="margin-right:20px;">@i.Quantity </span>  <br />
+                            @*@Html.CheckBoxIntFor(e => i.Quantity)  <span style="margin-right:20px;">@i.Quantity </span>  <br />*@
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

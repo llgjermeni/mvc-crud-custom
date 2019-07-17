@@ -1,0 +1,157 @@
+﻿@model PagedList.IPagedList<CrudeProject.Models.Order>
+@using PagedList.Mvc;
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+
+@{
+    ViewBag.Title = "Orders";
+}
+
+<h2>Orders</h2>
+
+<div class="col-sm-2"></div>
+<div class="col-sm-7">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    @using (Html.BeginForm("Index", "Orders", FormMethod.Get))
+    {
+        <p>
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+            <input type="submit" placeholder="Search by City" value="Search" />
+        </p>
+
+    }
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                @Html.ActionLink("City Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("School Name", "Index", new { sortOrder = ViewBag.SchoolSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>
+                Contact Phone
+            </th>
+            <th>
+                Shipping ID
+            </th>
+            <th>
+                Order StatusID
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SchoolName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShippingID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderStatusID)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.OrderID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.OrderID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.OrderID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <br />
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, orderAndSort = ViewBag.CurrentSort, filter = ViewBag.Filter }))
+</div>
+<div class="col-sm-3" style="margin-top: 50px;">
+    <div>
+
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            City
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                        <form method="post">
+                            @foreach (var i in Model)
+                            {
+                            <div class="checkbox" style="right: 10px; left: 10px;">
+                                @Html.CheckBoxStringFor(e => i.City)  <span style="margin-right:20px;">@i.City </span>  <br />
+                            </div>
+                            }
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            School Name
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+                        @foreach (var i in Model)
+                        {
+                            <div class="checkbox" style="right: 10px; left: 10px;">
+                                @Html.CheckBoxStringFor(e => i.SchoolName)  <span style="margin-right:20px;">@i.SchoolName </span>  <br />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingThree">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Address
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body">
+                        @foreach (var i in Model)
+                        {
+                            <div class="checkbox" style="right: 10px; left: 10px;">
+                                @Html.CheckBoxStringFor(e => i.Address)  <span style="margin-right:20px;">@i.Address </span>  <br />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

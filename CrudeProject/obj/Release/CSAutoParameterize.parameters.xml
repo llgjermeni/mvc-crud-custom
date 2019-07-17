@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="CrudeProjectContext-Web.config Connection String" description="CrudeProjectContext Connection String used in web.config by the application to access the database." defaultValue="Server=tcp:llazar-server.database.windows.net,1433;&#xD;&#xA;        Initial Catalog=llazar-db;&#xD;&#xA;        Persist Security Info=False;&#xD;&#xA;        User ID=llazar;&#xD;&#xA;        Password=Karaburuni@1978;&#xD;&#xA;        MultipleActiveResultSets=False;&#xD;&#xA;        Encrypt=True;&#xD;&#xA;        TrustServerCertificate=False;&#xD;&#xA;        Connection Timeout=30;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\User\\source\\repos\\CrudeProject\\CrudeProject\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='CrudeProjectContext']/@connectionString" />
+  </parameter>
+</parameters>

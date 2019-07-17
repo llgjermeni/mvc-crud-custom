@@ -1,0 +1,58 @@
+﻿@model CrudeProject.Models.OrderProduct
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>OrderProduct</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FabricTypeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FabricTypeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CoverTypeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CoverTypeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OrderProductID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
